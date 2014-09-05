@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Calendar Example</title>
+
+    <link rel='stylesheet' href='css/fullcalendar.css' />
+    <script src='js/moment.min.js'></script>
+    <script src='js/jquery.min.js'></script>
+    <script src='js/fullcalendar.min.js'></script>
+
+    <style>
+        body {
+            margin: 40px 10px;
+        }
+
+        #calendar {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div id='calendar'></div>
+
+    <script type="text/javascript">
+        $(function() {
+            $('#calendar').fullCalendar({
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,basicWeek,basicDay'
+                },
+                // Load the data using an AJAX call
+                events: {
+                    url: 'data/events.json',
+                    type: 'POST',
+                    data: {
+                        grnt_id : 12345
+                    },
+                    error: function() {
+                        alert('there was an error while fetching events!');
+                    },
+                    color: 'yellow',   // event defaults
+                    textColor: 'black' // event defaults
+                }
+
+            });
+        });
+    </script>
+</body>
+</html>
